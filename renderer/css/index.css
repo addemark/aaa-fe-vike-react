@@ -2,6 +2,7 @@
 @import "./links.css";
 @import "./code.css";
 @import "./page-transition-loading-animation.css";
+@import "./fonts.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
