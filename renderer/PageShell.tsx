@@ -1,14 +1,19 @@
-export { PageShell }
+export { PageShell };
 
-import React from 'react'
-import logoUrl from './logo.svg'
-import { PageContextProvider } from './usePageContext'
-import { Link } from './Link'
-import type { PageContext } from 'vike/types'
-import './css/index.css'
-import './PageShell.css'
+import React from "react";
+import logoUrl from "./logo.svg";
+import { LocalePageContextType, PageContextProvider } from "./usePageContext";
+import { Link } from "./Link";
+import "./css/index.css";
+import "./PageShell.css";
 
-function PageShell({ children, pageContext }: { children: React.ReactNode; pageContext: PageContext }) {
+function PageShell({
+  children,
+  pageContext,
+}: {
+  children: React.ReactNode;
+  pageContext: LocalePageContextType;
+}) {
   return (
     <React.StrictMode>
       <PageContextProvider pageContext={pageContext}>
@@ -23,21 +28,21 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
         </Layout>
       </PageContextProvider>
     </React.StrictMode>
-  )
+  );
 }
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        display: 'flex',
+        display: "flex",
         maxWidth: 900,
-        margin: 'auto'
+        margin: "auto",
       }}
     >
       {children}
     </div>
-  )
+  );
 }
 
 function Sidebar({ children }: { children: React.ReactNode }) {
@@ -47,15 +52,15 @@ function Sidebar({ children }: { children: React.ReactNode }) {
       style={{
         padding: 20,
         flexShrink: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        lineHeight: '1.8em',
-        borderRight: '2px solid #eee'
+        display: "flex",
+        flexDirection: "column",
+        lineHeight: "1.8em",
+        borderRight: "2px solid #eee",
       }}
     >
       {children}
     </div>
-  )
+  );
 }
 
 function Content({ children }: { children: React.ReactNode }) {
@@ -66,13 +71,13 @@ function Content({ children }: { children: React.ReactNode }) {
         style={{
           padding: 20,
           paddingBottom: 50,
-          minHeight: '100vh'
+          minHeight: "100vh",
         }}
       >
         {children}
       </div>
     </div>
-  )
+  );
 }
 
 function Logo() {
@@ -80,12 +85,12 @@ function Logo() {
     <div
       style={{
         marginTop: 20,
-        marginBottom: 10
+        marginBottom: 10,
       }}
     >
       <a href="/">
         <img src={logoUrl} height={64} width={64} alt="logo" />
       </a>
     </div>
-  )
+  );
 }

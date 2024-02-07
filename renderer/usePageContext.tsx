@@ -1,19 +1,31 @@
 // https://vike.dev/usePageContext
 // eslint-disable-next-line react-refresh/only-export-components
-export { usePageContext }
-export { PageContextProvider }
+export { usePageContext };
+export { PageContextProvider };
+export { LocalePageContextType };
 
-import React, { useContext } from 'react'
-import type { PageContext } from 'vike/types'
+import React, { useContext } from "react";
+import type { PageContext } from "vike/types";
+import { AvailableLanguageKeys } from "../locale/translations";
 
-const Context = React.createContext<PageContext>(undefined as unknown as PageContext)
+type LocalePageContextType = PageContext & { locale: AvailableLanguageKeys };
 
-function PageContextProvider({ pageContext, children }: { pageContext: PageContext; children: React.ReactNode }) {
-  return <Context.Provider value={pageContext}>{children}</Context.Provider>
+const Context = React.createContext<LocalePageContextType>(
+  undefined as unknown as LocalePageContextType
+);
+
+function PageContextProvider({
+  pageContext,
+  children,
+}: {
+  pageContext: LocalePageContextType;
+  children: React.ReactNode;
+}) {
+  return <Context.Provider value={pageContext}>{children}</Context.Provider>;
 }
 
 /** https://vike.dev/usePageContext */
 function usePageContext() {
-  const pageContext = useContext(Context)
-  return pageContext
+  const pageContext = useContext(Context);
+  return pageContext;
 }
